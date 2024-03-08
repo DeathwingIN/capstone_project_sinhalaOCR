@@ -1,6 +1,8 @@
 import React, { useState, useRef } from "react";
 import "./Header.css";
 import $ from "jquery";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Header = () => {
   const [selectedFiles, setSelectedFiles] = useState([]);
@@ -12,13 +14,11 @@ const Header = () => {
     if (convertedTextElement && convertedTextElement.value.trim() !== "") {
       convertedTextElement.select();
       document.execCommand("copy");
-      console.log(
-          "Copied!",
-          "Text has been copied to the clipboard",
-          "success"
-      );
+      // Show toast for successful copy
+      toast.success("Text has been copied to the clipboard", { autoClose: 3000 });
     } else {
-      console.log("Text Area Empty", "There is no text to copy.", "info");
+      // Show toast for empty text area
+      toast.info("There is no text to copy.", { autoClose: 3000 });
     }
   };
 
@@ -38,6 +38,12 @@ const Header = () => {
     var files = document.getElementById("image_file").files;
     var formData = new FormData();
     var endpoint = "/api/v1/extract_text";
+    if (files.length === 0) {
+      // Show toast notification for no uploaded image
+      toast.error("Error: No image uploaded", { autoClose: 3000 });
+      return;
+    }
+
 
     if (files.length === 1) {
       formData.append("image", files[0]);
@@ -81,21 +87,6 @@ const Header = () => {
         });
   };
 
-  // const uploadImage = () => {
-  //   const input = document.createElement("input");
-  //   input.type = "file";
-  //   input.accept = "image/*";
-  //   input.style.display = "none"; // Hide the input element
-  //   document.body.appendChild(input); // Append the input element to the document body
-  //   input.click();
-
-  //   // Listen for the 'change' event on the input element
-  //   input.addEventListener("change", (event) => {
-  //     handleFileSelect(event);
-  //     // Remove the input element after processing
-  //     document.body.removeChild(input);
-  //   });
-  // };
 
   function getConvertedFiles(taskID, numFiles) {
     // Assuming the server provides an API endpoint to fetch the converted files

@@ -30,6 +30,9 @@ const Navbar = () => {
         </div>
       </Link>
       <ul className="nav-menu">
+      <li>
+          <Link to="/">OCR</Link>
+        </li>
         <li>
           <Link to="/how-to-use">How To Use</Link>
         </li>

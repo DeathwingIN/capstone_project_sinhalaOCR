@@ -9,17 +9,17 @@ import footer_icon4 from '../images/footicon4.png'
 const Footer = () => {
     return (
         <div className="footer">
-            <div className="footer-logo">
+            {/* <div className="footer-logo">
                 <img src={footer_logo} alt="" />
-            </div>
-            <ul className="footer-links">
+            </div> */}
+            {/* <ul className="footer-links">
                 <li>How to Use</li>
                 <li>About Us</li>
                 <li>FAQ</li>
                 <li>Privacy Policy</li>
                 <li>Terms and Conditions</li>
-            </ul>
-            <div className="footer-social-icon">
+            </ul> */}
+            {/* <div className="footer-social-icon">
                 <div className="footer-icons-container">
                     <img src={footer_icon1} alt="" />
                 </div>
@@ -32,7 +32,7 @@ const Footer = () => {
                 <div className="footer-icons-container">
                     <img src={footer_icon4} alt="" />
                 </div>
-            </div>
+            </div> */}
             <div className="footer-copyright">
                 <hr />
                 <p>
